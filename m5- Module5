@@ -1,1 +1,1130 @@
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../login/login_widget.dart';
+import '../register/register_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class HomePageWidget extends StatefulWidget {
+  const HomePageWidget({Key? key}) : super(key: key);
+
+  @override
+  _HomePageWidgetState createState() => _HomePageWidgetState();
+}
+
+class _HomePageWidgetState extends State<HomePageWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginWidget(),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+        automaticallyImplyLeading: false,
+        title: Text(
+          FFLocalizations.of(context).getText(
+            'w8ap3ce9' /* SPLASHSCREEN */,
+          ),
+          style: FlutterFlowTheme.of(context).bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFEC1417),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_8vBF65kC9qzcwTTcgSvtMm69LUtiMmbExXOaH6s5O-iMuBB7gIxGxAx2zGAmTXA3_E&usqp=CAU',
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              FFButtonWidget(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                text: FFLocalizations.of(context).getText(
+                  'v8jt9n29' /* Get Started */,
+                ),
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: Color(0xFFEC1417),
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../login/login_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class RegisterWidget extends StatefulWidget {
+  const RegisterWidget({Key? key}) : super(key: key);
+
+  @override
+  _RegisterWidgetState createState() => _RegisterWidgetState();
+}
+
+class _RegisterWidgetState extends State<RegisterWidget> {
+  String? radioButtonValue;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+  TextEditingController? textController3;
+
+  late bool passwordVisibility1;
+  TextEditingController? textController4;
+
+  late bool passwordVisibility2;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
+    passwordVisibility1 = false;
+    textController4 = TextEditingController();
+    passwordVisibility2 = false;
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    textController3?.dispose();
+    textController4?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          FFLocalizations.of(context).getText(
+            'ty0fmfdr' /* Create Account */,
+          ),
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFA0B29),
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_8vBF65kC9qzcwTTcgSvtMm69LUtiMmbExXOaH6s5O-iMuBB7gIxGxAx2zGAmTXA3_E&usqp=CAU',
+                ),
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController1,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    '6r6v75i7' /* EMAIL */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController2,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    'iiwezzpp' /* PHONE NUMBER */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.phone,
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.number,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController3,
+                autofocus: true,
+                obscureText: !passwordVisibility1,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    '04dmtgok' /* PASSWORD */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility1 = !passwordVisibility1,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility1
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController4,
+                autofocus: true,
+                obscureText: !passwordVisibility2,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    '6y8406w1' /* CONFIRM PASSWORD */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility2 = !passwordVisibility2,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility2
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              Container(
+                height: 100,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(-0.54, -0.73),
+                      child: FlutterFlowRadioButton(
+                        options: [
+                          FFLocalizations.of(context).getText(
+                            '46vu0g7p' /* MALE */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'u5di8ux2' /* FEMALE */,
+                          ),
+                          FFLocalizations.of(context).getText(
+                            'jcryjvx5' /* OTHER */,
+                          )
+                        ].toList(),
+                        onChanged: (val) =>
+                            setState(() => radioButtonValue = val),
+                        optionHeight: 25,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.black,
+                                ),
+                        buttonPosition: RadioButtonPosition.left,
+                        direction: Axis.vertical,
+                        radioButtonColor: Color(0xFFFA0B29),
+                        inactiveRadioButtonColor: Color(0x8A000000),
+                        toggleable: false,
+                        horizontalAlignment: WrapAlignment.start,
+                        verticalAlignment: WrapCrossAlignment.start,
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(-0.94, -0.88),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'nj2mflvn' /* GENDER: */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginWidget(),
+                      ),
+                    );
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'bquu4cfd' /* CREATE */,
+                  ),
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: Color(0xFFFA0B29),
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFEEFAFF),
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'w13cajkc' /* Already have an account? */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+import '../dashboard/dashboard_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../home_page/home_page_widget.dart';
+import '../register/register_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({Key? key}) : super(key: key);
+
+  @override
+  _LoginWidgetState createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+
+  late bool passwordVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DashboardWidget(),
+        ),
+      );
+    });
+
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePageWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          FFLocalizations.of(context).getText(
+            'qwgovduz' /* Login */,
+          ),
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFA0B29),
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS1ijSLxZfgCkp4x8Yj9HTP-DXLIXgKIYQesAUmIKd9LCB3HwPQWTQfJC-P8Nh317iCXY&usqp=CAU',
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              ),
+              TextFormField(
+                controller: textController1,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    'r7934x8n' /*  EMAIL / PHONE NUMBER */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.multiline,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController2,
+                autofocus: true,
+                obscureText: !passwordVisibility,
+                decoration: InputDecoration(
+                  hintText: FFLocalizations.of(context).getText(
+                    '7zfv6ga7' /* PASSWORD */,
+                  ),
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility = !passwordVisibility,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+              Divider(),
+              FFButtonWidget(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DashboardWidget(),
+                    ),
+                  );
+                },
+                text: FFLocalizations.of(context).getText(
+                  'js1bcqcg' /* Log in */,
+                ),
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: Color(0xFFF80717),
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'bnw3u7mb' /* CREATE  ACCOUNT */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    's5xk2xu0' /* Forgot your password? */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Divider(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+import '../emergency_contacts_and_symptoms_check/emergency_contacts_and_symptoms_check_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../login/login_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class DashboardWidget extends StatefulWidget {
+  const DashboardWidget({Key? key}) : super(key: key);
+
+  @override
+  _DashboardWidgetState createState() => _DashboardWidgetState();
+}
+
+class _DashboardWidgetState extends State<DashboardWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFFA0B29),
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          FFLocalizations.of(context).getText(
+            '7og7q8zg' /* DASHBOARD */,
+          ),
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFE0307),
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUYJ2_NHt6sd5ZD46aVRD5bbF1E_MHJIpPag&usqp=CAU',
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.25,
+                fit: BoxFit.cover,
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTe1cE7Ocbw8BEUxbZxLDiz4XlL92_rZpd_Q&usqp=CAU',
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'ylvoupcn' /* Systoms Check */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNIyTkqMe-qcGqEs0E1NpxyA75S03vPGhCag&usqp=CAU',
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'zlpg5ugt' /*  Emergency Contacts */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
+              ),
+              Divider(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+import '../dashboard/dashboard_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_web_view.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class EmergencyContactsAndSymptomsCheckWidget extends StatefulWidget {
+  const EmergencyContactsAndSymptomsCheckWidget({Key? key}) : super(key: key);
+
+  @override
+  _EmergencyContactsAndSymptomsCheckWidgetState createState() =>
+      _EmergencyContactsAndSymptomsCheckWidgetState();
+}
+
+class _EmergencyContactsAndSymptomsCheckWidgetState
+    extends State<EmergencyContactsAndSymptomsCheckWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DashboardWidget(),
+              ),
+            );
+          },
+        ),
+        title: Align(
+          alignment: AlignmentDirectional(0, 0),
+          child: Text(
+            FFLocalizations.of(context).getText(
+              'xmsxq1dy' /* Emergency Contacts */,
+            ),
+            textAlign: TextAlign.start,
+            style: FlutterFlowTheme.of(context).title2.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFFFA0B29),
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              FlutterFlowWebView(
+                url:
+                    'https://www.kimberley.co.za/places/kimberley/information/kimberley-emergency-numbers/',
+                bypass: false,
+                height: 400,
+                verticalScroll: false,
+                horizontalScroll: false,
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DashboardWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    '020clrec' /* Symptoms Check */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFFFA0B29),
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+              Divider(),
+              FlutterFlowWebView(
+                url: 'https://www.medifind.com/symptom-checker',
+                bypass: false,
+                height: 500,
+                verticalScroll: false,
+                horizontalScroll: false,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
